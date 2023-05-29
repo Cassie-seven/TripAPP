@@ -1,0 +1,26 @@
+<ion-header>
+  <div class="title">
+    <button (click)="goBack()" style="position: absolute;
+    top: 30px;
+    left: 5px;" small ion-button icon-only clear color="light" class="course-back">          
+        <img class="back-btn" style="height: 20px;padding-left: 10px;" src="assets/imgs/back2.png" /> 
+    </button>
+
+    <label>每日返程</label>
+    </div>
+</ion-header>
+
+
+<ion-content padding>
+  <!-- <div class="xc-box">
+
+  </div> -->
+  <div class="top" (click)="_startInterview(1)">
+    <p class="p-s">1. 起始打卡</p>
+  </div>
+  <div class="tit">起始打卡位置：{{start_position}}</div>
+  <div class="bottom" (click)="_startInterview(2)">
+    <p class="p-s">2. 终点打卡</p>
+  </div>
+  <div class="tit" style="top:90%">终点打卡位置：{{end_position}}</div>
+</ion-content>

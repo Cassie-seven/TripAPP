@@ -1,0 +1,164 @@
+<ion-header>
+
+  <div class="title">
+    <button (click)="goBack()" style="position: absolute;
+    top: 30px;
+    left: 5px;" small ion-button icon-only clear color="light" class="course-back">          
+        <img class="back-btn" style="height: 20px;padding-left: 10px;" src="assets/imgs/back2.png" /> 
+    </button>
+
+    <label>操作说明</label>
+</div>
+</ion-header>
+<ion-content style="background:#f2f2f2;">
+    <div class="head">
+        <h6>《APP操作说明及相关要求》</h6>
+    </div>
+
+    <div>
+      <div>
+        <p class="p-title">一、用户登录</p>
+      </div>
+      <div class="d-img">
+        <img :src="assets/imgs/登录.jpg"/>
+      </div>
+      <div class="d-g">
+        <p class="p-g">功能描述：</p>
+        <p class="p-g">1.	登录的初始账号和密码就是OP系统的账号密码。</p>
+        <p class="p-g">2.	手机第一次登陆APP或者更换手机，需要重新提交后台审核。</p>
+        <p class="p-g">3.	登录流程：输入账号密码——点击登录——验证账号密码——登录成功。</p>
+        <p class="p-r">注：1. 第一次使用APP或者每次更新版本，如有登录不上的情况，请检查应用权限是否全部打开，然后再重进APP即可。如是网络问题则会登录超时。2. 登录密码会出现重置的情况，是因为输入错误次数上限。</p>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <p class="p-title">二、案件中心</p>
+      </div>
+      <div class="d-img">
+        <img :src="assets/imgs/案件中心.jpg"/>
+      </div>
+      <div class="d-g">
+        <p class="p-g">功能描述：</p>
+        <p class="p-g">1.	登录成功后默认进入案件中心。</p>
+        <p class="p-g">2.	案件中心会展示文员分配过来给自己的外访单。</p>
+        <p class="p-g">3.	顶部搜索框可通过外访地区或姓名进行案件筛选。</p>
+        <p class="p-g">4.	案件中心分为进行中、未进行、已完成和已逾期四种类型。</p>
+        <p class="p-g">5.	进行中的案件需要在当天晚上12点前上传催记，否则会标记为超时。</p>
+        <p class="p-g">6.	未进行的案件现按照分单的日期升序排序。</p>
+        <p class="p-g">7.	已完成的案件只展示近期一个月的，并可以按照催收结果进行筛选。</p>
+        <p class="p-g">8.	已逾期案件：非协访的单据7天自动逾期，协访单据10天自动逾期（未进行的状态）。</p>
+        <p class="p-g">9.	案件可以点击进入查看案件详细情况。</p>
+        
+        <p class="p-r">注：1. 外访地址在首页不会详细显示。2.已逾期的案件不可以点击查看案件详情，非协访的案件文员可以重新调单。3.已退案或停催的案件不会显示在列表中。</p>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <p class="p-title">三、案件详情</p>
+      </div>
+      <div class="d-img">
+        <img :src="assets/imgs/案件详情.jpg"/>
+      </div>
+      <div class="d-g">
+        <p class="p-g">功能描述：</p>
+        <p class="p-g">1.	这里展示点击某个案件的详细信息，包括案件的基本信息、共债情况、以往催记（按实际排序有效20条）、以往外访催记、以往线索等。</p>
+        <p class="p-g">2.	如果是未进行的案件，底下蓝色的按钮则为灰色，文字显示为立即开始外访。点击立即开始外访就会更新案件状态至进行中。</p>
+        
+        <p class="p-r">注：1. 这里对卡号和证件号等信息进行了脱敏。 2. 如果出现未解析到案件地址，可以忽略。</p>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <p class="p-title">四、外访进度</p>
+      </div>
+      <div class="d-img">
+        <img :src="assets/imgs/外访进度.jpg"/>
+      </div>
+      <div class="d-g">
+        <p class="p-g">功能描述：</p>
+        <p class="p-g">1.	这里可以实时看到自己的案件外访进度。</p>
+        <p class="p-g">2.	外访流程：出发位置打卡——目的地位置打卡——上传外访材料。</p>
+        <p class="p-g">3.	打卡定位采用的百度地图的方式。</p>
+        
+        <p class="p-r">注：1.如果打不上卡，先检查打卡权限是否开放。再看是否位置信号良好，如果信号不佳可以报备。2.打卡成功会弹出当前的地理位置，可能只定位到区，实际的坐标没有问题，如有问题，及时发送位置至后台核对。3.打卡不上需要录制视频说明原因并上传至APP。</p>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <p class="p-title">五、外访催记录入</p>
+      </div>
+      <div class="d-img">
+        <img :src="assets/imgs/外访催记录入.jpg"/>
+      </div>
+      <div class="d-g">
+        <p class="p-g">功能描述：</p>
+        <p class="p-g">1.	录入的必填信息有：是否有效户、催收结果、外访人员、外访催收记录、图片、录音。</p>
+        <p class="p-g">2.	录入的非必填信息有：新线索、留函、新电话、新地址和视频。</p>
+        <p class="p-g">3. 保存功能不能保存图片、录音、视频和凭证内容。</p>
+        <p class="p-g">4.	图片至少上传3张，录音至少上传1个，最多2个，大小限制在300M，视频只能上传一个，催收结果为承诺还款需要上传凭证。</p>
+        <p class="p-g">5. 上传录音、视频和凭证时有进度条显示，上传速度与网络有关。</p>
+        
+        <p class="p-r">注：1.现在上传为原图，上传速度会有点慢。 2. 如上传时出现闪退现象可以重启下手机，手机运行内存可能溢出。3. 上传录音、图片会对文件的类型限制。</p>
+      </div>
+    </div>
+   
+    <div>
+      <div>
+        <p class="p-title">六、最新还款</p>
+      </div>
+      <div class="d-img">
+        <img :src="assets/imgs/最新还款.jpg"/>
+      </div>
+      <div class="d-g">
+        <p class="p-g">功能描述：</p>
+        <p class="p-g">1. 这里展示近7天所有案件的还款信息：案件、ID 、姓名 、还款时间 、银行 、金额。</p>
+        <p class="p-g">2. 可以根据案件ID进行案件筛选。</p>                       
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <p class="p-title">七、个人中心 - 每日返程</p>
+      </div>
+      <div class="d-img">
+        <img :src="assets/imgs/每日返程.jpg"/>
+      </div>
+      <div class="d-g">
+        <p class="p-g">功能描述：</p>
+        <p class="p-g">1.	外访员每天访完最后一户需要进行返程打卡，保证一天行程公里数的完整性。</p>
+        <p class="p-g">2. 打卡刷新时间为次日。所以需要在当天之前打完两次卡。特殊情况需要报备。</p>
+        <p class="p-g">3. 打卡遇到的问题参考第五点。</p>                        
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <p class="p-title">七、个人中心 - 每日返程</p>
+      </div>
+      <div class="d-img">
+        <img :src="assets/imgs/每日返程.jpg"/>
+      </div>
+      <div class="d-g">
+        <p class="p-g">功能描述：</p>
+        <p class="p-g">1.	外访员每天访完最后一户需要进行返程打卡，保证一天行程公里数的完整性。</p>
+        <p class="p-g">2. 打卡刷新时间为次日。所以需要在当天之前打完两次卡。特殊情况需要报备。</p>
+        <p class="p-g">3. 打卡遇到的问题参考第五点。</p>                        
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <p class="p-title">八、其它功能</p>
+      </div>
+      <div class="d-img">
+        <img :src="assets/imgs/个人中心.jpg"/>
+      </div>
+      <div class="d-g">
+        <p class="p-g">功能描述：个人信息、我的消息、联系我们、操作说明和设置等。</p>                           
+      </div>
+    </div>
+</ion-content>

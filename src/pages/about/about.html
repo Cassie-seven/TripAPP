@@ -1,0 +1,56 @@
+<ion-header>
+    <div class="title">
+        <ion-searchbar (ionInput)="filterItems($event)" placeholder="请输入案件ID查询~"></ion-searchbar>      
+    </div>
+  </ion-header>
+  <div class="sy">
+      <div style=" top: 25%;left: -30%;" class="syf">{{uname}}</div>
+      <div class="syf">{{uname}}</div>
+      <div style=" top: 75%;left:30%" class="syf">{{uname}}</div>
+    </div>
+  <ion-content (swipe)="swipeEvent($event)">
+    <ion-refresher (ionRefresh)="doRefresh($event)" (ionStart)="refreshStart($event)">
+          <ion-refresher-content pullingIcon="ios-arrow-round-down-outline"
+                                 pullingText="下拉刷新"
+                                 refreshingSpinner="ios-small"
+                                 refreshingText="正在刷新..."></ion-refresher-content>
+    </ion-refresher>
+    <div [ngSwitch]="segmentModel">
+      <div *ngFor="let li of datalist;">              
+         <div class="card" *ngSwitchCase="'segmentOne'">                         
+              <div class="card-body" (click)="goToDetails(li)">            
+                <div class="card-exceprt" style="height:100%">                                      
+                      <ion-item class="left">                        
+                          <ion-icon class="icon" name="document"></ion-icon>
+                          <p>案件ID：{{li.pa_case_id}}</p>                                                   
+                      </ion-item>  
+                      <ion-item class="right">                        
+                          <ion-icon class="icon" name="person"></ion-icon>
+                          <p>姓名：{{li.case_name}}</p>                                                  
+                      </ion-item>
+                      <ion-item class="left">                        
+                        <ion-icon class="icon" name="time"></ion-icon>
+                        <p>还款时间：{{li.pa_paid_time}}</p>                                                  
+                    </ion-item>                                              
+                      <ion-item class="right">                        
+                          <ion-icon class="icon" name="home"></ion-icon>
+                          <p>银行：{{li.bank_name}}</p>                                                     
+                      </ion-item>                       
+                      
+                      
+                    <ion-item class="left">                        
+                        <ion-icon class="icon" name="logo-yen"></ion-icon>
+                        <p>金额：{{li.pa_paid_money}}</p>                                                  
+                    </ion-item>   
+                                        
+                </div>                 
+              </div>           
+          </div>
+      </div>
+           
+    </div>
+    <div   class="norecord"><span *ngIf="datalist.length<=0">没有符合的记录哦~~</span></div>
+    <div  class="endrecord"><span *ngIf="datalist.length>0">已经到底啦~~</span></div> 
+    
+  </ion-content>
+  

@@ -1,0 +1,225 @@
+// http://ionicframework.com/docs/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+@import "../assets/fonts/iconfont.scss";
+.box {
+    width: 200px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 100px;
+    margin-bottom: 25px;    
+  }
+.toast-container {
+    width: 100%;
+    height: 35px;
+  }
+  .error {
+    .toast-message {
+      color: #fff;
+    }
+    .toast-wrapper {
+      background-color: #bd3f3f;
+      @extend .box;
+    }
+  }
+  .loginout {
+    .toast-message {
+      color: #fff;
+    }
+    .toast-wrapper {
+      background-color: #444;
+      @extend .box;
+    }
+  }
+  .success {
+    .toast-message {
+      color: #fff;
+    }
+    .toast-wrapper {
+      background-color: #009a9a;
+      @extend .box;
+    }
+  }
+  .tip {
+    .toast-message {
+      color: #31708f;
+    }
+    .toast-wrapper {
+      background: #d9edf7;
+      @extend .box;
+    }
+  }
+  .toast-md .toast-wrapper.toast-top {
+    top: 47px;
+    height: 15px;
+  }
+  .toast-md .toast-message {
+    display: flex;
+    justify-content: center;
+    font-size: .8em;
+    padding-top: 15px;
+  }
+  .scroll-content {
+    padding: 0 !important
+  }
+
+
+  .ion-page > .tab-icons > .show-tabbar{
+  background-color:#fff;
+  border-top:1px solid #f0f0f0!important;
+}
+
+  .tabs-md .tab-button .tab-button-icon,
+.tabs-ios .tab-button .tab-button-icon {
+  color: #969696;
+}
+.tabs-ios .tab-button[aria-selected=true] .tab-button-icon {
+    color: #1c1c1c;
+    // color: #cb9b3e;
+}
+
+.tabs-md .tab-button:hover:not(.disable-hover),
+.tabs-md .tab-button[aria-selected=true],
+.tabs-ios .tab-button:hover:not(.disable-hover),
+.tabs-ios .tab-button[aria-selected=true] {
+    color: #1c1c1c;
+    // color: #cb9b3e;
+}
+
+.tabs-md .tab-button[aria-selected=true] .tab-button-icon,
+.tabs-ios .tab-button[aria-selected=true] .tab-button-icon {
+  color: #1c1c1c;
+    // color: #cb9b3e;
+}
+.tabbar::before, .header-md::after, .footer-md::before{
+  background-image: none !important;
+}
+.tabs-md .tab-button{
+  min-height:5.4rem;
+}
+
+.tabs-md .tab-button .tab-button-text {
+  font-size: 10px;
+  font-weight: 500;
+}
+.tabs-ios .tab-button-icon{
+  height:26px;
+}
+/*移除android  tabs交互效果*/
+.tabs-md .tab-button[aria-selected=true] .tab-button-text {
+  transform: scale3d(1,1,1) !important;
+}
+.tabs-md .tab-button[aria-selected=true] .tab-button-icon{
+  transform:translate3d(0,0,0)!important;
+}
+
+
+//头像选择弹窗
+.action-sheet-md {
+  text-align: center;
+}
+
+.action-sheet-md .action-sheet-container {
+  padding: 0 10px;
+}
+
+.action-sheet-md .action-sheet-group {
+  overflow: hidden;
+  margin-bottom: 8px;
+  border-radius: 13px;
+  background: #f9f9f9;
+}
+
+.action-sheet-md .action-sheet-group:last-child {
+  margin-bottom: 10px;
+  padding-bottom: 0;
+}
+
+.action-sheet-md .action-sheet-title {
+  padding: 1.5rem;
+  border-bottom: 0.55px solid #d6d6da;
+  border-radius: 0;
+  font-size: 1.3rem;
+  font-weight: 400;
+  text-align: center;
+  color: #8f8f8f;
+}
+
+.action-sheet-md .action-sheet-button {
+  margin: 0;
+  padding: 18px;
+  min-height: 5.6rem;
+  border-bottom: 0.55px solid #d6d6da;
+  font-size: 1.6rem;
+  color: #007aff;
+  background: transparent;
+}
+
+.action-sheet-md .action-sheet-button:last-child {
+  border-bottom: 0;
+}
+
+
+.action-sheet-md .action-sheet-cancel {
+  font-weight: 500;
+  background: #fff;
+}
+
+.action-sheet-md .action-sheet-group:last-child {
+  padding-bottom: 0rem;
+}
+
+.zm-action-button {
+  .button-inner {
+    justify-content: center !important;
+  }
+}
+
+//alert button css
+.alertBtn{
+   
+  .alert-wrapper {
+      border-radius: 10px;
+    }
+
+.alert-title {
+  font-size: 1.8rem;
+  text-align: center;
+  margin-top: -10px;
+}
+
+ .alert-button-group {
+    padding: 0;
+    border-top: 1px solid #e1dce6;
+    justify-content: center;
+  }
+
+ .alert-message {
+    max-height: 240px;
+    font-size: 1.4rem;
+    text-align:center;
+  }
+
+.alert-button {
+  width: 50%;
+  border-left: 1px solid #e1dce6;
+  margin:0;
+  .button-inner {
+    justify-content: center;
+  }
+}
+    
+}

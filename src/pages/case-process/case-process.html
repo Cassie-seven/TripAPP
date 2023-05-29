@@ -1,0 +1,119 @@
+<!--
+  Generated template for the CaseProcessPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <div class="title">
+    <button (click)="goBack()" style="position: absolute;
+    top: 30px;
+    left: 5px;" small ion-button icon-only clear color="light" class="course-back">          
+        <img class="back-btn" style="height: 20px;padding-left: 10px;" src="assets/imgs/back2.png" /> 
+    </button>
+
+    <label>外访进度</label>
+</div>
+
+</ion-header>
+
+<!-- <div class="sy">
+  <div style=" top: 25%;left: -30%;" class="syf">{{uname}}</div>
+  <div class="syf">{{uname}}</div>
+  <div style=" top: 75%;left:30%" class="syf">{{uname}}</div>
+</div> -->
+<ion-content padding>
+  <section class="process">
+    <div class="container">
+      <!-- <h4 style="margin-top: 20px;font-size: 16px;">外访流程</h4> -->
+      <p style="margin-top: 30px;">您只需完成<span style="    color: #b34545;;
+        font-size: 18px;"> {{4 - process}} </span>步，即可完成此次外访
+        </p>
+      <ul class="flowline clearfix">
+        <li class="process-module process-0">
+          <span class="icon-block">
+            <img src="assets/imgs/blank.gif"  alt="注册云账号并企业实名" style="background-position: 0px 0;margin-top: 5px;"><br /> 
+            <span class="flow-line"></span> 
+          </span>
+          <br />
+          <span>1.出发地打卡</span>
+        </li>
+        <li class="process-module process-1">
+          <span class="icon-block">
+            <img src="assets/imgs/blank.gif" alt="提交申请" style="background-position: -32px 0;    margin-top: 5px;
+            margin-left: 3px;"> <br /> 
+            <span class="flow-line"></span>
+          </span>
+          <br />
+          <span>2.目标地打卡</span>
+        </li>
+
+        <li class="process-module process-4">
+          <span class="icon-block">
+            <img src="assets/imgs/blank.gif" alt="完成认证" style="background-position: -128px 0;    margin-top: 4px;
+            margin-left: 2px;"> <br />           
+          </span>
+          <br /> 
+          <span>3.上传外访资料</span> 
+        </li> 
+        
+      </ul> 
+    </div>
+  </section>
+  <h5 style="margin-top: 50px;text-align: center;font-size: 16px;">我的进程</h5>
+  <ion-list style="margin-top: 30px;">
+    <!-- <ng-container *ngFor="let item of data">
+      <ion-item>
+        <ion-avatar  item-start>
+          <img style="width:30px;height:30px" src="assets/imgs/完成.png">
+        </ion-avatar>
+        <h2 style="margin-top:0px">{{item.name}}</h2>
+        <p>{{item.description}}</p>
+        <ion-badge class="done" *ngIf="item.gender===1" color="primary" (click)="_startInterview(item.name)"><img style="padding-top: 2px;padding-right: 2px;" src="{{item.icon}}"><span style="position: relative;top: -5px;">{{item.birthYear}}</span></ion-badge>
+        <ion-badge class="undone" *ngIf="item.gender===0" (click)="_startInterview(item.name)"><img style="padding-top: 2px;padding-right: 2px;" src="{{item.icon}}"><span style="position: relative;top: -5px;">{{item.birthYear}}</span></ion-badge>
+      </ion-item>
+    </ng-container> -->
+
+    <ng-container>
+      <ion-item>
+        <ion-avatar  item-start>
+          <img *ngIf="process == 1" style="width:27px;height:27px" src="assets/imgs/完成.png">
+          <img *ngIf="process > 1" style="width:30px;height:30px" src="assets/imgs/已完成.png">
+        </ion-avatar>
+        <h2 style="margin-top:0px">第一步</h2>
+        <p *ngIf="process == 1">请您在出发地打卡</p>
+        <p *ngIf="process > 1">出发地位置：{{start_position}}</p>
+        <!-- <ion-badge *ngIf="process > 1" class="done"  color="primary" (click)="_startInterview(1)"><img style="padding-top: 2px;padding-right: 2px;" src="assets/imgs/位置.png"><span style="position: relative;top: -5px;">已打卡</span></ion-badge> -->
+        <ion-badge *ngIf="process == 1" class="undone"  color="primary" (click)="_startInterview(1)"><img style="padding-top: 2px;padding-right: 2px;" src="assets/imgs/位置.png"><span style="position: relative;top: -5px;">打卡</span></ion-badge>
+
+      </ion-item>
+
+      <ion-item>
+        <ion-avatar  item-start>
+          <img *ngIf="process <= 2" style="width:27px;height:27px" src="assets/imgs/完成.png">
+          <img *ngIf="process > 2 " style="width:30px;height:30px" src="assets/imgs/已完成.png">
+
+        </ion-avatar>
+        <h2 style="margin-top:0px">第二步</h2>
+        <p *ngIf="process <= 2">请您在目的地打卡</p>
+        <p *ngIf="process > 2">目的地位置：{{end_position}}</p>
+        <!-- <ion-badge *ngIf="process > 2" class="done"  color="primary" (click)="_startInterview(2)"><img style="padding-top: 2px;padding-right: 2px;" src="assets/imgs/位置.png"><span style="position: relative;top: -5px;">已打卡</span></ion-badge> -->
+        <ion-badge *ngIf="process <= 2" class="undone"  color="primary" (click)="_startInterview(2)"><img style="padding-top: 2px;padding-right: 2px;" src="assets/imgs/位置.png"><span style="position: relative;top: -5px;">打卡</span></ion-badge>
+      </ion-item>
+
+      <ion-item>
+        <ion-avatar  item-start>
+          <img *ngIf="process <= 3" style="width:27px;height:27px" src="assets/imgs/完成.png">
+          <img *ngIf="process > 3" style="width:30px;height:30px" src="assets/imgs/已完成.png">
+        </ion-avatar>
+        <h2 style="margin-top:0px">第三步</h2>
+        <p>上传外访材料，如催记、照片等</p>
+        <ion-badge *ngIf="process <= 3" class="undone"  color="primary" (click)="_startInterview(3)"><img style="padding-top: 2px;padding-right: 2px;" src="assets/imgs/上传.png"><span style="position: relative;top: -5px;">上传</span></ion-badge>
+        <ion-badge *ngIf="process > 3" class="done"  color="primary" (click)="_startInterview(3)"><img style="padding-top: 2px;padding-right: 2px;" src="assets/imgs/上传.png"><span style="position: relative;top: -5px;">上传</span></ion-badge>
+      </ion-item>
+
+      <!-- <button style="margin-left: 40%;margin-top: 50px;background-color: #2d3d54" ion-button color="dark" (click)="getGps()">GPS打卡</button> -->
+    </ng-container>
+  </ion-list>
+</ion-content>

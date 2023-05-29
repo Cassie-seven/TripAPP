@@ -1,0 +1,46 @@
+<ion-header>
+  <div class="title">
+    <button (click)="goBack()" style="position: absolute;
+    top: 30px;
+    left: 5px;" small ion-button icon-only clear color="light" class="course-back">          
+        <img class="back-btn" style="height: 20px;padding-left: 10px;" src="assets/imgs/back2.png" /> 
+    </button>
+
+    <label>设置</label>
+</div>
+</ion-header>
+
+<ion-content style="background:#f2f2f2;">
+<div style="height:100%;width:100%;">
+  <div style="height:90%;">
+    <ion-list class="user-set-list" style="margin-bottom:16px;">
+      <!-- <ion-item style="font-size: 1.4rem;" (tap)="modifyPassword()">
+        修改密码
+        <ion-icon class="userset-darkgrey" item-right><i class="zzl-appicons zion-arrow-right" style="font-size:1.6rem;"></i></ion-icon>
+      </ion-item>
+      <ion-item style="font-size: 1.4rem;" (tap)="modifyMobile()">
+        更换手机号
+        <ion-icon class="userset-darkgrey" item-right><i class="zzl-appicons zion-arrow-right" style="font-size:1.6rem;"></i></ion-icon>
+      </ion-item> -->
+    </ion-list>
+    <ion-list class="user-set-list">
+      <ion-item style="font-size: 1.4rem;">
+        <ion-label style="text-align:left;margin-right:0;">当前版本</ion-label>
+        <ion-label style="text-align:right;margin-right:0;color:#757575;">1.6.6</ion-label>
+      </ion-item>
+    </ion-list>
+    <ion-list class="userset-list">
+      <ion-item  style="font-size: 1.4rem;" (tap)="logout()">
+        退出应用程序
+      </ion-item>
+    </ion-list>
+  </div>
+  <div class="userregisteragree" style="height:4%;position: relative;bottom: 5px">
+    <!-- <span>外访APP服务协议</span> -->
+    <span>深巨元外访APP</span>
+  </div>
+  <div class="userset-info" style="height:4%;position: relative;bottom: 5px">
+    <span>Copyright © 2019-2021 深巨元信息咨询有限公司版权所有</span>
+  </div>
+</div>
+</ion-content>

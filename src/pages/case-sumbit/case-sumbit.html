@@ -1,0 +1,304 @@
+<!--
+  Generated template for the CaseSumbitPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <div class="title">
+    <button (click)="goBack()" style="position: absolute;
+    top: 30px;
+    left: 5px;" small ion-button icon-only clear color="light" class="course-back">          
+        <img class="back-btn" style="height: 20px;padding-left: 10px;" src="assets/imgs/back2.png" /> 
+    </button>
+
+    <label>录入信息</label>
+    <span (click)="save()" style="position: absolute;right: 18px;">保存</span>
+</div>
+
+</ion-header>
+<div id="record" ></div>
+<div class="sy">
+  <div style=" top: 25%;left: -30%;" class="syf">{{uname}}</div>
+  <div class="syf">{{uname}}</div>
+  <div style=" top: 75%;left:30%" class="syf">{{uname}}</div>
+</div>
+<ion-content style="background:#f2f2f2;">
+    <div style="width:100%; ">           
+      <div class="info-d">
+        <ion-list radio-group [(ngModel)]="selectValue" (ionChange)="langSelect()">
+          <ion-item style="width:50%;float:left;border-right: #f0f0f0 solid 1px;">
+              <ion-label style="margin-left: 12px;    margin: 12px;font-size: 12px;
+              color: #6e6e6e;">是（有效户）</ion-label>
+              <ion-radio checked="{{top}}"  value="0"></ion-radio>
+          </ion-item>
+          <ion-item style="width:50%" class= "ion-radio-item">
+              <ion-label style="margin-left: 12px;    margin: 12px;font-size: 12px;
+              color: #6e6e6e;">否（无效户）</ion-label>
+              <ion-radio checked="{{bottom}}}" value="1"></ion-radio>
+          </ion-item>           
+        </ion-list>
+      </div>
+
+      
+      <!-- 催收结果 -->
+      <div class="info-d" style="width: 100%;float: left;">
+          <ion-item style="height: 40px;">
+          <ion-label style="    font-size: 12px;
+          margin: 12px;
+          color: #6e6e6e;">催收结果</ion-label>
+          <ion-select style="background-color: #ffffff;max-width:100%;font-size: 13px;" okText="确定" cancelText="取消" >             
+              <ion-option *ngFor="let num of country" (ionSelect)="selectNumber(num)" value={{num.value}}>{{num.title}}</ion-option>
+          </ion-select>
+          </ion-item>
+      </div>
+      <div class="info-d" style="width: 49%;float: right;display: none;">
+        <textarea mode="ios" readonly style="width:100%;padding:7px 10px;line-height:2.5rem;font-size: 12px;height: 40px;" n-mo [(ngModel)]="seclectedCountry" class="feedback-text" rows="1"  maxlength="500" placeholder="请选择催收结果~"></textarea>
+     </div>
+     <!-- 出行方式 -->
+     <div class="info-d" style="width: 100%;float: left;">
+      <ion-item style="height: 40px;">
+      <ion-label style="    font-size: 12px;
+      margin: 12px;
+      color: #6e6e6e;">出行方式</ion-label>
+      <ion-select style="background-color: #ffffff;max-width:100%;font-size: 13px;" okText="确定" cancelText="取消" >             
+          <ion-option *ngFor="let num of travel_type" (ionSelect)="selectType(num)" value={{num.value}}>{{num.title}}</ion-option>
+      </ion-select>
+      </ion-item>
+  </div>
+  <!-- 函件使用情况 -->
+  <div class="info-d" style="width: 100%;float: left;">
+    <ion-item style="height: 40px;">
+    <ion-label style="    font-size: 12px;
+    margin: 12px;
+    color: #6e6e6e;">函件使用情况</ion-label>
+    <ion-select style="background-color: #ffffff;max-width:100%;font-size: 13px;" okText="确定" ionCancel="cancelSelect()" cancelText="取消" >             
+        <ion-option *ngFor="let num of letter_type" (ionSelect)="selectLetterType(num)" value={{num.value}}>{{num.title}}</ion-option>
+    </ion-select>
+    </ion-item>
+</div>
+<!-- 受访人关系 -->
+<div class="info-d" style="width: 100%;float: left;">
+  <ion-item style="height: 40px;">
+  <ion-label style="    font-size: 12px;
+  margin: 12px;
+  color: #6e6e6e;">受访人关系</ion-label>
+  <ion-select style="background-color: #ffffff;max-width:100%;font-size: 13px;" okText="确定" (ionCancel)="cancelRelationSelect()" cancelText="取消" >             
+      <ion-option *ngFor="let num of relation_type" (ionSelect)="selectRelationType(num)" value={{num.value}}>{{num.title}}</ion-option>
+  </ion-select>
+  </ion-item>
+</div>
+  <div class="info-d" style="width: 49%;float: right;display: none;">
+    <textarea mode="ios" readonly style="width:100%;padding:7px 10px;line-height:2.5rem;font-size: 12px;height: 40px;" n-mo [(ngModel)]="selectedTravelType" class="feedback-text" rows="1"  maxlength="500" placeholder="请选择出行方式~"></textarea>
+ </div>
+ <div class="info-d">
+    <textarea mode="ios" style="width:100%;padding:7px 10px;line-height:2.5rem;font-size: 12px;" n-mo [(ngModel)]="users" class="feedback-text" rows="1"  maxlength="500" placeholder="请输入外访人员~"></textarea>
+ </div>
+ <div class="info-d">
+    <p style="text-align: center;">车辆信息</p>
+</div>
+<!-- 费用填写 -->
+<div class="info-d" style="width: 50%;float: right;border-left: #f0f0f0 solid 1px;">
+     
+  <input style="width:100%;padding:7px 10px;line-height:2.5rem;font-size: 12px;height: 40px;border:none;" [(ngModel)]="car_number"  placeholder="车牌号" maxlength="11">
+ </div>
+ <div class="info-d" style="width: 50%;">
+
+  <input type="number" style="width:100%;padding:7px 10px;line-height:2.5rem;font-size: 12px;height: 40px;border:none;"  [(ngModel)]="get_car_km"  placeholder="领车公里数（KM）" maxlength="11">
+ </div>
+ <!-- <div class="info-d" style="width: 50%;float: left;padding-top: 1px;height: 41px;">
+  <textarea mode="ios"  style="width:100%;padding:7px 10px;line-height:2.5rem;font-size: 12px;height: 40px;" n-mo [(ngModel)]="toll_fee_position" class="feedback-text" rows="1"  maxlength="500" placeholder="过路费地点"></textarea>
+ </div> -->
+ <div class="info-d" style="width: 50%;float: right;padding-top: 1px;border-left: #f0f0f0 solid 1px;height: 41px;">
+  <textarea mode="ios"  style="width:100%;padding:7px 10px;line-height:2.5rem;font-size: 12px;height: 40px;" n-mo [(ngModel)]="signatory" class="feedback-text" rows="1"  maxlength="500" placeholder="私车签约人"></textarea>
+ </div>
+ <div class="info-d" style="width: 50%;float: left;padding-top: 1px;">
+  
+  <input type="number" style="width:100%;padding:7px 10px;line-height:2.5rem;font-size: 12px;height: 40px;border:none;" [(ngModel)]="back_car_km"   placeholder="还车公里数（KM）" maxlength="11">
+ </div>
+
+ <div>
+  <p style="text-align: center;margin-top: 56px;">其它费用</p>
+</div>
+     
+     <!-- 费用填写 -->
+     <div class="info-d" style="width: 50%;float: right;border-left: #f0f0f0 solid 1px;">
+     
+      <input type="number" style="width:100%;padding:7px 10px;line-height:2.5rem;font-size: 12px;height: 40px;border:none;" [(ngModel)]="toll_fee"   placeholder="过路费（总计元）" maxlength="11">
+     </div>
+     <div class="info-d" style="width: 50%;">
+    
+      <input type="number" style="width:100%;padding:7px 10px;line-height:2.5rem;font-size: 12px;height: 40px;border:none;"  [(ngModel)]="parking_fee"  placeholder="停车费（总计元）" maxlength="11">
+     </div>
+     <!-- <div class="info-d" style="width: 50%;float: left;padding-top: 1px;height: 41px;">
+      <textarea mode="ios"  style="width:100%;padding:7px 10px;line-height:2.5rem;font-size: 12px;height: 40px;" n-mo [(ngModel)]="toll_fee_position" class="feedback-text" rows="1"  maxlength="500" placeholder="过路费地点"></textarea>
+     </div> -->
+     <div class="info-d" style="width: 50%;float: right;padding-top: 1px;border-left: #f0f0f0 solid 1px;height: 41px;">
+      <input type="number" style="width:100%;padding:7px 10px;line-height:2.5rem;font-size: 12px;height: 40px;border:none;" [(ngModel)]="car_wash_money"   placeholder="洗车费（总计元）" maxlength="11">
+     </div>
+     <div class="info-d" style="width: 50%;float: left;padding-top: 1px;    padding-bottom: 1px;">
+      
+      <input type="number" style="width:100%;padding:7px 10px;line-height:2.5rem;font-size: 12px;height: 40px;border:none;" [(ngModel)]="hotel_fee"   placeholder="住宿费（总计元）" maxlength="11">
+     </div>
+     <!-- <div class="info-d" style="width: 50%;float: right;padding-top: 1px;border-left: #f0f0f0 solid 1px;height: 42px;">
+      <textarea mode="ios"  style="width:100%;padding:7px 10px;line-height:2.5rem;font-size: 12px;height: 40px;" n-mo [(ngModel)]="hotel_name" class="feedback-text" rows="1"  maxlength="500" placeholder="住宿酒店名称"></textarea>
+     </div> -->
+
+
+     <div>
+      <p style="text-align: center;margin-top: 56px;">加油费用（未加油无需填）</p>
+    </div>
+         
+         <!-- 加油费用 -->
+         <div class="info-d" style="width: 50%;float: right;border-left: #f0f0f0 solid 1px;">        
+            <input type="number" style="width:100%;padding:7px 10px;line-height:2.5rem;font-size: 12px;height: 40px;border:none;" [(ngModel)]="before_oil_balance"   placeholder="加油前余额（总计元）" maxlength="11">
+         </div>
+
+         <div class="info-d" style="width: 50%;height: 41px;">      
+            <input type="number" style="width:100%;padding:7px 10px;line-height:2.5rem;font-size: 12px;height: 40px;border:none;"  [(ngModel)]="after_oil_balance"  placeholder="加油后余额（总计元）" maxlength="11">
+         </div>
+
+      <div class="info-c">
+        <textarea mode="ios" style="width:100%;padding:7px 10px;line-height:2rem;font-size: 12px;" n-mo [(ngModel)]="userFeedback" class="feedback-text" rows="5"  maxlength="500" placeholder="请输入您的外访催记记录（10~2000个字）"></textarea>
+      </div>
+      <div class="info-c">
+          <textarea mode="ios" style="width:100%;padding:7px 10px;line-height:2rem;font-size: 12px;" n-mo [(ngModel)]="newClue" class="feedback-text" rows="5"  maxlength="500" placeholder="请输入发现新线索 没有可不填哦~"></textarea>
+      </div>
+      <div class="info-c">
+          <textarea mode="ios" style="width:100%;padding:7px 10px;line-height:2rem;font-size: 12px;" n-mo [(ngModel)]="letter" class="feedback-text" rows="5"  maxlength="500" placeholder="请输入留函 没有可不填哦~"></textarea>
+      </div>
+      <div class="info-c">
+          <textarea mode="ios" style="width:100%;padding:7px 10px;line-height:2rem;font-size: 12px;" n-mo [(ngModel)]="newAddress" class="feedback-text" rows="5"  maxlength="500" placeholder="请输入发现地址 没有可不填哦~"></textarea>
+      </div>
+      <div class="info-c">
+          <textarea mode="ios" style="width:100%;padding:7px 10px;line-height:2rem;font-size: 12px;" n-mo [(ngModel)]="newPhone" class="feedback-text" rows="5"  maxlength="500" placeholder="请输入发现新电话 没有可不填哦~"></textarea>
+      </div>
+      <!-- <div class="info-c" style="width: 50%;float: left;padding-right: 7px;">
+          <textarea mode="ios" style="width:100%;padding:7px 10px;line-height:2rem;font-size: 12px;" n-mo [(ngModel)]="newPhone" class="feedback-text" rows="1"  maxlength="500" placeholder="过路费（总计元）"></textarea>
+      </div>
+      <div class="info-c" style="width: 50%;float: left;">
+          <textarea mode="ios" style="width:100%;padding:7px 10px;line-height:2rem;font-size: 12px;" n-mo [(ngModel)]="newPhone" class="feedback-text" rows="1"  maxlength="500" placeholder="停车费（总计元）"></textarea>
+      </div>
+      <div class="info-c" style="width: 50%;float: left;padding-right: 7px;">
+          <textarea mode="ios" style="width:100%;padding:7px 10px;line-height:2rem;font-size: 12px;" n-mo [(ngModel)]="newPhone" class="feedback-text" rows="1"  maxlength="500" placeholder="住宿费（总计元）"></textarea>
+      </div>
+      <div class="info-c" style="width: 50%;float: left;">
+          <textarea mode="ios" style="width:100%;padding:7px 10px;line-height:2rem;font-size: 12px;" n-mo [(ngModel)]="newPhone" class="feedback-text" rows="1"  maxlength="500" placeholder="其它费用（总计元）"></textarea>
+      </div> -->
+      <!-- <div style="padding-bottom: 3px;">
+        <ion-list class="feed-back-list" mode="ios" style="padding:5px 12px;margin-bottom:0;">
+          <ion-item mode="ios" class="email">
+            <ion-input mode="ios" style="border:0;outline:none;text-indent:12px;" type="text" clearInput  placeholder="请输入您的邮箱" maxlength="50"></ion-input>
+          </ion-item>
+        </ion-list>
+      </div> -->   
+      <div style="height: 360px;">
+          <!-- <div class="imgbox" [ngStyle]="{'background-image': 'url('+image_left+')'}" (click)="presentActionSheet(1)">
+            <i class="sjy-icons iconjiahao"></i>
+          </div> -->
+          <div   (click)="presentActionSheet(1)"><ion-thumbnail class="imgbox" item-left><img class="iimg"  src="{{imageData1}}"></ion-thumbnail></div>
+          <div   (click)="presentActionSheet(2)"><ion-thumbnail class="imgbox" item-left><img class="iimg"  src="{{imageData2}}"></ion-thumbnail></div>
+          <div   (click)="presentActionSheet(3)"><ion-thumbnail class="imgbox" item-left><img class="iimg"  src="{{imageData3}}"></ion-thumbnail></div>
+          <div   (click)="presentActionSheet(4)"><ion-thumbnail class="imgbox" item-left><img class="iimg"  src="{{imageData4}}"></ion-thumbnail></div>
+          <div   (click)="presentActionSheet(5)"><ion-thumbnail class="imgbox" item-left><img class="iimg"  src="{{imageData5}}"></ion-thumbnail></div>
+          <div   (click)="presentActionSheet(6)"><ion-thumbnail class="imgbox" item-left><img class="iimg"  src="{{imageData6}}"></ion-thumbnail></div>
+          <!-- <div class="imgbox" [style.background-image]="'url('+imageData2+')'" (click)="presentActionSheet(2)"><i class="sjy-icons iconjiahao"></i></div>
+          <div class="imgbox" [style.background-image]="'url('+imageData3+')'" (click)="presentActionSheet(3)"><i class="sjy-icons iconjiahao"></i></div>
+          <div class="imgbox" [style.background-image]="'url('+imageData4+')'" (click)="presentActionSheet(4)"><i class="sjy-icons iconjiahao"></i></div>
+          <div class="imgbox" [style.background-image]="'url('+imageData5+')'" (click)="presentActionSheet(5)"><i class="sjy-icons iconjiahao"></i></div>
+          <div class="imgbox" [style.background-image]="'url('+imageData6+')'" (click)="presentActionSheet(6)"><i class="sjy-icons iconjiahao"></i></div> -->
+          <!-- <ion-list>
+            <ion-item>
+              <ion-thumbnail item-left>
+                <img src="{{imageData1}}">
+              </ion-thumbnail>
+              <h2>照片1</h2>
+              <p>如为有效户请上传与持卡人合照</p>
+              <button ion-button clear item-right (click)="presentActionSheet(1)">上传照片</button>
+            </ion-item>
+            <ion-item>
+              <ion-thumbnail item-left>
+                <img src="{{imageData2}}">
+              </ion-thumbnail>
+              <h2>照片2</h2>
+              <p>请上传与地址相关照片</p>
+              <button ion-button clear item-right (click)="presentActionSheet(2)">上传照片</button>
+            </ion-item>
+            <ion-item>
+              <ion-thumbnail item-left>
+                <img src="{{imageData3}}">
+              </ion-thumbnail>
+              <h2>照片3</h2>
+              <p>此处展示英雄榜的内容</p>
+              <button ion-button clear item-right (click)="presentActionSheet(3)">上传照片</button>
+            </ion-item>
+            <ion-item>
+              <ion-thumbnail item-left>
+                <img src="{{imageData4}}">
+              </ion-thumbnail>
+              <h2>照片4</h2>
+              <p>其它照片内容</p>
+              <button ion-button clear item-right (click)="presentActionSheet(4)">上传照片</button>
+            </ion-item>
+            <ion-item>
+              <ion-thumbnail item-left>
+                <img src="{{imageData5}}">
+              </ion-thumbnail>
+              <h2>照片5</h2>
+              <p>此处展示英雄榜的内容</p>
+              <button ion-button clear item-right (click)="presentActionSheet(5)">上传照片</button>
+            </ion-item>
+            <ion-item>
+              <ion-thumbnail item-left>
+                <img src="{{imageData6}}">
+              </ion-thumbnail>
+              <h2>照片6</h2>
+              <p>此处展示英雄榜的内容</p>
+              <button ion-button clear item-right (click)="presentActionSheet(6)">上传照片</button>
+            </ion-item>
+          </ion-list> -->
+      </div>
+      <div style="padding: 12px 10px 12px 19px;
+      color: #757575;
+      font-size: 12px;">
+        您上传的录音1：{{this.mediaUploadString}}
+      </div>
+      <div style="padding: 12px 10px 12px 19px;
+      color: #757575;
+      font-size: 12px;">
+        您上传的录音2：{{this.mediaUploadString2}}
+      </div>
+      <div style="padding: 12px 10px 12px 19px;
+      color: #757575;
+      font-size: 12px;">
+        您上传的视频：{{this.videoUploadString}}
+      </div>
+      <div style="padding: 12px 10px 12px 19px;
+      color: #757575;
+      font-size: 12px;">
+        您上传的凭证：{{this.voucherUploadString}}
+      </div>
+      <div style="padding:12px;padding-bottom: 0;">
+        <button ion-button clear class="uploadimg" (click)="uploadmedia(1)">上传录音</button>
+      </div>
+      <div style="padding:12px;padding-bottom: 0;">
+        <button ion-button clear class="uploadimg" (click)="uploadmedia(2)">上传录音</button>
+      </div>
+      
+      <div style="padding:12px;padding-bottom: 0;">
+          <button ion-button clear class="uploadimg" (click)="uploadvideo()">上传视频</button>
+      </div>
+
+      <div style="padding:12px;padding-bottom: 0;">
+        <button ion-button clear class="uploadimg" (click)="uploadvoucher()">上传还款凭证</button>
+      </div>
+      
+      <!-- <div style="padding:12px;padding-bottom: 0;">
+          <button ion-button clear class="uploadvideo">上传视频</button>
+      </div> -->
+      <div style="padding:12px;">
+        <button ion-button clear class="submitbtn" (click)="sumbit()">提交</button>
+      </div>
+    </div>
+  </ion-content>

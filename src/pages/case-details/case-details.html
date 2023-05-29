@@ -1,0 +1,203 @@
+
+<ion-header>
+
+  <!-- <ion-navbar>
+      <button (click)="goBack()" small ion-button icon-only clear color="light" class="course-back">
+          <ion-icon name="arrow-back" style="font-size:2.8rem;color: gray"></ion-icon>
+          <img class="back-btn" style="height: 25px;padding-left: 10px;" src="assets/imgs/back.png" /> 
+      </button>
+    <ion-title>外访信息</ion-title>
+  </ion-navbar> -->
+  <div class="title">
+      <button (click)="goBack()" style="position: absolute;
+      top: 25px;
+      left: 5px;" small ion-button icon-only clear color="light" class="course-back">          
+          <img class="back-btn" style="height: 20px;padding-left: 10px;" src="assets/imgs/back2.png" /> 
+      </button>
+
+      <label>外访信息</label>
+  </div>
+</ion-header>
+
+<div class="sy">
+  <!-- <div style=" top: 25%;left: -30%;" class="syf">{{uname}}</div> -->
+  <div class="syf">{{uname}}</div>
+  <!-- <div style=" top: 75%;left:30%" class="syf">{{uname}}</div> -->
+</div>
+<ion-content class="grid-basic-page">
+  <div class="content">
+        <div class="content">
+            <div id="{{id}}" style="width: 100%;height: 250px;    margin-bottom: 5px;"></div>
+            <h4 style="text-align: center;font-size: 14px">-- 案件信息 --</h4>
+            <ion-row>
+              <ion-col><div class="div-left">案件ID：</div></ion-col>
+              <ion-col><div class="div-right">{{case_id}}</div></ion-col> 
+              </ion-row>
+            <ion-row>
+                <ion-col><div class="div-left">外访地址：</div></ion-col>
+                <ion-col><div class="div-right">{{datalist.address}}</div></ion-col> 
+                </ion-row>
+                <ion-row>
+                  <ion-col><div class="div-left">信函投递结果：</div></ion-col>
+                  <ion-col><div class="div-right">{{datalist.eis_process_des}}</div></ion-col> 
+                  </ion-row>
+                <ion-row>
+                <ion-col><div class="div-left">银行：</div></ion-col>
+                <ion-col><div class="div-right">{{datalist.bank_name}}</div></ion-col>
+                </ion-row>
+                <ion-row>
+                <ion-col><div class="div-left">领单日期：</div></ion-col>
+                <ion-col><div class="div-right">{{datalist.ld_date}}</div></ion-col> 
+                </ion-row>
+                <ion-row>
+                <ion-col><div class="div-left">外访日期：</div></ion-col>
+                <ion-col><div class="div-right">{{datalist.wf_date}}</div></ion-col> 
+                </ion-row>
+                <ion-row>
+                <ion-col><div class="div-left">持卡人：</div></ion-col>
+                <ion-col><div class="div-right">{{datalist.card_name}}</div></ion-col> 
+                </ion-row>
+                <ion-row>
+                <ion-col><div class="div-left">卡号：</div></ion-col>
+                <ion-col><div class="div-right">{{datalist.card_number}}</div></ion-col> 
+                </ion-row>
+                <ion-row>
+                <ion-col><div class="div-left">证件号：</div></ion-col>
+                <ion-col><div class="div-right">{{datalist.id_number}}</div></ion-col> 
+                </ion-row>
+                <ion-row>
+                <ion-col><div class="div-left">退单时间：</div></ion-col>
+                <ion-col><div class="div-right">{{datalist.case_backdate_p}}</div></ion-col> 
+                </ion-row>
+                <ion-row>
+                <ion-col><div class="div-left">委托日期：</div></ion-col>
+                <ion-col><div class="div-right">{{datalist.case_time}}</div></ion-col> 
+                </ion-row> 
+                <ion-row>
+                <ion-col><div class="div-left">单据类别：</div></ion-col>
+                <ion-col><div class="div-right">{{datalist.company_sb}}</div></ion-col> 
+                </ion-row> 
+                <ion-row>
+                <ion-col><div class="div-left">欠款金额：</div></ion-col>
+                <ion-col><div class="div-right">{{datalist.case_money}}</div></ion-col> 
+                </ion-row> 
+                <ion-row>
+                <ion-col><div class="div-left">开卡时间：</div></ion-col>
+                <ion-col><div class="div-right">{{datalist.case_cre_date}}</div></ion-col> 
+                </ion-row> 
+                <ion-row>
+                <ion-col><div class="div-left">共债债情况：</div></ion-col>
+                <ion-col><div class="div-right">{{datalist.common_qk}}</div></ion-col> 
+                </ion-row> 
+                <ion-row>
+                <ion-col *ngIf="datalist.is_show == 0"><div class="div-left">联系电话：</div></ion-col>
+                <ion-col *ngIf="datalist.is_show == 0"><div class="div-right">{{datalist.phone_number}}</div></ion-col> 
+                </ion-row>
+                <ion-row>
+                  <ion-col><div class="div-left">业务员：</div></ion-col>
+                  <ion-col><div class="div-right">{{datalist.real_name}}</div></ion-col> 
+                </ion-row>  
+                <!-- <ion-row>
+                <ion-col><div class="div-left">地区：</div></ion-col>
+                <ion-col><div class="div-right">{{datalist''.}}</div></ion-col> 
+                </ion-row>  -->
+                <div *ngFor="let item of CaseJointList;let i = index;">
+                  <h4 style="text-align: center;font-size: 14px">-- 共债情况{{i+1}} --</h4>                
+                      <ion-row>
+                      <ion-col><div class="div-left">银行名称：</div></ion-col>
+                      <ion-col><div class="div-right">{{item.bank_name}}</div></ion-col> 
+                      </ion-row>
+                      <ion-row>
+                      <ion-col><div class="div-left">委案金额：</div></ion-col>
+                      <ion-col><div class="div-right">{{item.case_money}}</div></ion-col> 
+                      </ion-row>
+                      <ion-row>
+                        <ion-col><div class="div-left">委案日期：</div></ion-col>
+                        <ion-col><div class="div-right">{{item.case_time}}</div></ion-col> 
+                      </ion-row>
+              </div>
+                <div  *ngFor="let item of CaseRemarkList;let i = index;">
+                  <div *ngIf="datalist.is_show == 0">
+                    <h4  style="text-align: center;font-size: 14px">-- 备注信息{{i+1}} --</h4>                
+                      <ion-row>
+                      <ion-col><div class="div-left">备注内容：</div></ion-col>
+                      <ion-col><div class="div-right">{{item.vr_remark1}}</div></ion-col> 
+                      </ion-row>
+                  </div>                 
+              </div>
+                <div *ngFor="let item of reminderlist;let i = index;">
+                  <div *ngIf="datalist.is_show == 0">
+                    <h4 style="text-align: center;font-size: 14px">-- 以往催记 {{i+1}} --</h4>
+                    
+                      <ion-row>
+                        <ion-col><div class="div-left">最新欠款：</div></ion-col>
+                        <ion-col><div class="div-right">{{item.new_money}}</div></ion-col> 
+                        </ion-row>
+                        <ion-row>
+                        <ion-col><div class="div-left">催收人员：</div></ion-col>
+                        <ion-col><div class="div-right">{{item.c_name}}</div></ion-col> 
+                        </ion-row>
+                        <ion-row>
+                        <ion-col><div class="div-left">催收时间：</div></ion-col>
+                        <ion-col><div class="div-right">{{item.c_time}}</div></ion-col> 
+                        </ion-row>
+                        <ion-row>
+                        <ion-col><div class="div-left">联络结果：</div></ion-col>
+                        <ion-col><div class="div-right">{{item.c_result}}</div></ion-col> 
+                        </ion-row>
+                        <ion-row>
+                        <ion-col><div class="div-left">催收内容：</div></ion-col>
+                        <ion-col><div class="div-right">{{item.c_content}}</div></ion-col> 
+                        </ion-row>
+                    </div>                
+                    
+                </div>
+                <div *ngFor="let item of CasePhoneRedList;let i = index;">
+                  <div *ngIf="datalist.is_show == 0">
+                    <h4 style="text-align: center;font-size: 14px">-- 以往外访催记 {{i+1}} --</h4>                
+                  <ion-row>
+                      <ion-col><div class="div-left">外访人：</div></ion-col>
+                      <ion-col><div class="div-right">{{item.pr_user_name}}</div></ion-col> 
+                      </ion-row>
+                      <ion-row>
+                      <ion-col><div class="div-left">联系时间：</div></ion-col>
+                      <ion-col><div class="div-right">{{item.pr_time}}</div></ion-col> 
+                      </ion-row>
+                      <ion-row>
+                      <ion-col><div class="div-left">催收结果：</div></ion-col>
+                      <ion-col><div class="div-right">{{item.data_name}}</div></ion-col> 
+                      </ion-row>
+                      <ion-row>
+                      <ion-col><div class="div-left">催记：</div></ion-col>
+                      <ion-col><div class="div-right">{{item.pr_content}}</div></ion-col> 
+                      </ion-row>
+                  </div>
+                  
+              </div>
+              <div *ngFor="let item of CaseClubList;let i = index;">
+                <div *ngIf="datalist.is_show == 0">
+                  <h4 style="text-align: center;font-size: 14px">-- 以往线索{{i+1}} --</h4>                
+                    <ion-row>
+                    <ion-col><div class="div-left">联系时间：</div></ion-col>
+                    <ion-col><div class="div-right">{{item.cc_date}}</div></ion-col> 
+                    </ion-row>
+                    <ion-row>
+                    <ion-col><div class="div-left">内容：</div></ion-col>
+                    <ion-col><div class="div-right">{{item.cc_content}}</div></ion-col>
+                    </ion-row>
+                </div>
+                
+              </div>
+                
+                </div>              
+  </div>
+  <div style="height:50px;">
+
+  </div>
+  
+</ion-content>
+<ion-footer style="height:4.4rem;">
+    <div class="btn-box">
+      <button class="btn-login" [ngStyle]="{'background-color': btnColor,'color': btnFontColor}"  ion-button outline color="light" (click)="_startInterview()">{{btnTxt}}</button>
+    </div>
+</ion-footer>

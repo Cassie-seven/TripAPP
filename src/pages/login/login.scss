@@ -1,0 +1,248 @@
+page-login {
+  .sy {
+    height: 100%;
+    width: 100%;
+    background-color: #1b1b1b;
+    z-index: 1001;
+    position: relative;
+    pointer-events: none;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.13);
+    opacity: 0.7;
+  }
+  .syf {
+    position: relative;
+    top: 50%;
+    font-size: 24px;
+    transform: rotate(45deg);
+  }
+  .login-area-c {
+    position: absolute;
+    z-index: 1001;
+    width: 290px;
+    top: 420px;
+    height: 300px;
+    // background-color: rgba(0, 0, 0, 0.5);
+    left: 50%;
+    transform: translate(-50%, -50%);
+    img {
+      position: relative;
+      top: 39px;
+      left: 15px;
+    }
+  }
+  .btn-box-c {
+    position: absolute;
+    z-index: 1001;
+    width: 290px;
+    top: 462px;
+    // background-color: rgba(0, 0, 0, 0.5);
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+  .btn-login-c {
+    width:80%;    
+    height: 52px;       
+    border-color:transparent; 
+    background-color:#cb9b3e;
+    margin:0 .2rem;
+    color: #fff;
+    font-size:14px;
+    border-radius: 25px;
+    
+  }
+  .line {
+    position: absolute;
+    z-index: 1001;
+    width: 330px;
+    bottom: 85px;
+    // background-color: rgba(0, 0, 0, 0.5);
+    left: 50%;
+    transform: translate(-50%, -50%) scaleY(0.9);
+    text-align: center;
+    height: 1px;
+    background-color: #b2b2b2;
+  }
+  input {
+    width: 290px;
+    height: 52px;
+    max-width: 100%;
+    padding: 7px 12px;
+    font-size: 14px;
+    background-color:rgba(0, 0, 0, 0.55);
+    transition: all 300ms linear 0s;
+    outline: none;
+    box-sizing: border-box;
+    border: none;
+    color: #ffffff;
+    border-radius: 5px;
+    padding-left: 50px;
+  }
+  input:focus{
+    box-shadow: none;
+    border-bottom: 1px solid #cb9b3e;
+  }  
+  .logo {
+    background-image: url('../assets/imgs/cf3aab2515c9feaab3620c6ede93254c.png');
+    // background-image: url('../assets/imgs/sjylogo.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    width:140px;
+    height:120px;
+    margin: 0 auto;
+    // background-color: #b2b2b2d1;
+    border-radius: 45px;
+    position: absolute;
+    top: 150px;
+    left: 50%;
+    z-index: 1001;
+    transform: translate(-50%, -50%); 
+}     
+   .login-box {
+        height:100%;
+        width:100%; 
+        background-size: cover;
+        background-position: center 0%;
+        background-color: #212e3f;
+        background-image: url('../assets/imgs/84415840266e97d765821cca627ad847.jpg');
+        // background-color: #2d3d54;
+        .logo-box {
+            margin-top: 18%;
+            .logo {
+                background-image: url('../assets/imgs/head.jpg');
+                // background-image: url('../assets/imgs/sjylogo.png');
+                background-size: cover;
+                background-repeat: no-repeat;
+                width:90px;
+                height:90px;
+                margin: 0 auto;
+                background-color: #b2b2b2d1;
+                border-radius: 45px;
+            }     
+            .wf {
+              // background-image: url('../assets/imgs/Visiting1.PNG');
+              background-image: url('../assets/imgs/110.PNG');
+                background-repeat: no-repeat;
+                background-size: contain;
+                height:100px;                
+                margin: 0 auto;
+                margin-top: 31px;
+                margin-left: 30%;
+            }       
+        }
+        .head-box {
+            margin: 50px auto;
+            width:120px;
+            height:120px;
+            border-radius:60%;
+            background-image: url('../assets/imgs/head.jpg'); 
+            display: block;
+            background-size: cover;
+            box-shadow: 0 0 50px gray;
+            background-repeat: no-repeat;
+        }
+        .login-area {
+          background-color: #d9e6e7;
+          margin-left: 40px;
+          margin-right: 40px;
+          margin-top: 50px;
+          border-radius: 10px;
+          height: 320px;
+          display: none;
+          opacity: 0.7;
+          // box-shadow: 0 30px 40px #909090;
+          h3 {
+            text-align: center;
+            padding-top: 36px;
+          }
+        }
+        .login-area-a {
+          background-color: #ffffff;
+          margin-left: 40px;
+          margin-right: 35px;
+          border-radius: 15px;
+          height: 12px;
+          opacity: 0.2;
+        }
+        .zi {
+            
+            color: #b2b2b2c4;
+            position: absolute;
+            bottom: 3%;      
+            font-size: 12px;
+            width: 100%;
+            p {
+              text-align: center;
+            }
+        }
+        .input-box {
+            text-align: center;
+            padding-top: 10px;
+            .lgD {
+                padding: 0px 20px 12px 20px;
+                // margin-left: -20px;
+            }
+            input {
+                width: 310px;
+                height: 43px;
+                max-width: 100%;
+                padding: 7px 12px;
+                font-size: 14px;
+                background-color: #ffffff;
+                // background-color:#e8f0fe;
+                transition: all 300ms linear 0s;
+                outline: none;
+                box-sizing: border-box;
+                // border-radius: 5px;
+                border: solid 1px #dddddd;
+                border-top: none;
+                border-left: none;
+                border-right: none;
+                color: #222;
+              }
+              input::-webkit-input-placeholder{
+                color: #cbcbcb;
+              }
+              input::-moz-placeholder{
+                color: #cbcbcb;
+              }
+              input:-moz-placeholder{
+                color: #cbcbcb;
+              }
+              input:-ms-input-placeholder{
+                color: #cbcbcb;
+              }
+              input#username{
+                padding-left: 55px;
+              }
+              input#password{
+                padding-left: 55px;
+              }
+              input:focus{
+                box-shadow: none;
+                border-bottom: 1px solid #0d6fb8;
+              }     
+              img {
+                position: absolute;
+                left: 70px;
+                top: 297px;
+              }        
+        }
+        .btn-box {
+            text-align: center;
+            margin-top: 2.5rem;
+            padding: 0px 20px 12px 20px;
+            .btn-login {
+                width:100%;    
+                height: 43px;       
+                border-color:transparent; 
+                background-color:#0d6fb8;
+                margin:0 .2rem;
+                color: #fff;
+                font-size:1.4rem;
+                border-radius: 5px;
+            }
+       }
+   }
+}

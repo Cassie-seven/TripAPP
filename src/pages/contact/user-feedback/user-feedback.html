@@ -1,0 +1,29 @@
+<ion-header>
+  <div class="title">
+    <button (click)="goBack()" style="position: absolute;
+    top: 30px;
+    left: 5px;" small ion-button icon-only clear color="light" class="course-back">          
+        <img class="back-btn" style="height: 20px;padding-left: 10px;" src="assets/imgs/back2.png" /> 
+    </button>
+
+    <label>意见反馈</label>
+</div>
+</ion-header>
+
+<ion-content style="background:#f2f2f2;">
+<div style="height:100%;width:100%; padding-top: 5px;">
+  <div style="padding:12px;">
+    <textarea mode="ios" style="width:100%;padding:7px 10px;line-height:2rem;" class="feedback-text" rows="9" [(ngModel)]="userFeedback" maxlength="500" placeholder="请输入您的反馈意见（10～500个字）"></textarea>
+  </div>
+  <div style="padding-bottom: 3px;">
+    <ion-list class="feed-back-list" mode="ios" style="padding:5px 12px;margin-bottom:0;">
+      <ion-item mode="ios" class="email">
+        <ion-input mode="ios" style="border:0;outline:none;text-indent:12px;" type="text" clearInput [(ngModel)]="userEmail"  placeholder="请输入您的邮箱" maxlength="50"></ion-input>
+      </ion-item>
+    </ion-list>
+  </div>
+  <div style="padding:12px;">
+    <button ion-button clear class="submitbtn" (tap)="submit()" [disabled]="disalebsave"> 提交</button>
+  </div>
+</div>
+</ion-content>

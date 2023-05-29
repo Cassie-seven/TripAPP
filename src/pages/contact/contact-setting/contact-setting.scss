@@ -1,0 +1,169 @@
+page-contact-setting {
+  .title {
+    text-align: center;      
+    font-size: 14px;
+    height: 70px;
+    // background-color: #4b6286;
+    background-color: #2d3d54;
+    width: 100%;
+    color: #FFFFFF;
+    padding-top: 40px;
+}
+    .scroll-content {
+        overflow: hidden;
+    }
+    .userset-item-ios {
+        position: relative;
+        padding-left: 0px;
+        border-radius: 0;
+        font-size: 1.4rem;
+        color: #000;
+        background-color: #fff;
+        transition: background-color 200ms linear;
+      }
+    
+      .userset-list ion-item {
+        margin: 0px 0px 0px 0px;
+        padding: 10px 0px 10px 15px;
+        border-bottom: 1px solid #f0f0f0;
+        text-align: center;
+        /*color: chocolate;*/
+        color: #e74c3c;
+      }
+    
+      .userset-list ion-item.item-ios {
+        border-bottom: 0.55px solid #f0f0f0;
+      }
+    
+      .userset-list .item-block .item-inner {
+        padding-right: 0px !important;
+        border-width: 0px !important;
+        border-style: none !important;
+      }
+    
+      .userset-list.list-ios > .item-block:first-child {
+        border-top: 0.55px solid #f0f0f0;
+      }
+    
+      .userset-list.list-ios > .item-block:last-child, .userset-list.list-ios > .item-wrapper:last-child .item-block {
+        border-bottom: 0.55px solid #f0f0f0;
+      }
+    
+      .userset-list.list-md > .item-block:first-child {
+        border-top: 1px solid #f0f0f0;
+      }
+    
+      .userset-list.list-md > .item-block:last-child, .userset-list.list-md > .item-wrapper:last-child .item-block {
+        border-bottom: 1px solid #f0f0f0;
+      }
+    
+      .userset-list ion-item {
+        padding: 0px 0px 0px 0px;
+        border: 0;
+      }
+    
+      .userregisteragree {
+        font-size: 1.2rem;
+        color: #858585;
+        text-align: center;
+      }
+    
+      .userregisteragree span {
+        /*color: #0094ff;*/
+        color: #5a7fae;
+        text-decoration: underline;
+      }
+    
+      .userset-info {
+        font-size: 1.15rem;
+        color: #858585;
+        text-align: center;
+      }
+    
+      .userset-info span {
+        color: #858585;
+      }
+    
+      .userset-darkgrey {
+        color: #bfbfbf;
+        font-size: 2rem;
+        font-weight: 100;
+        line-height: 3rem;
+        padding-left: 5px;
+      }
+    
+      .user-set-list ion-item {
+        margin: 0px 0px 0px 0px;
+        padding: 0px 0px 0px 15px;
+        border-bottom: 1px solid #f0f0f0;
+        text-align: left;
+      }
+    
+      .user-set-list .item-block .item-inner {
+        padding-right: 0px !important;
+        border-width: 0px !important;
+        border-style: none !important;
+      }
+    
+      .user-set-list.list-ios > .item-block:first-child {
+        border-top: 0.55px solid #f0f0f0;
+      }
+    
+      .user-set-list.list-ios > .item-block:last-child, .user-set-list.list-ios > .item-wrapper:last-child .item-block {
+        border-bottom: 0.55px solid #f0f0f0;
+      }
+    
+      .user-set-list.list-md > .item-block:first-child {
+        border-top: 1px solid #f0f0f0;
+      }
+    
+      .user-set-list.list-md > .item-block:last-child, .user-set-list.list-md > .item-wrapper:last-child .item-block {
+        border-bottom: 1px solid #f0f0f0;
+      }
+    
+      .item-block {
+        margin: 0;
+        padding: 0;
+        text-align: initial;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        overflow: hidden;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        width: 100%;
+        min-height: 3.4rem;
+        border: 0;
+        font-weight: normal;
+        line-height: normal;
+        text-decoration: none;
+        color: inherit;
+      }
+    
+      .user-set-list {
+        background-color: #fff;
+        padding: 0 12px;
+    
+        .item {
+          padding-left: 0;
+          border: 0 !important;
+          border-bottom: 1px solid #f0f0f0 !important;
+    
+          .icon {
+            margin-right: 0;
+          }
+        }
+    
+        .item:last-child {
+          border-bottom: 0 !important;
+        }
+      }
+    
+      .userset-list ion-item {
+        border: 0 !important;
+      }
+}

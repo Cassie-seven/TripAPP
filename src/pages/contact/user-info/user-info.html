@@ -1,0 +1,53 @@
+<ion-header>
+
+  <div class="title">
+    <button (click)="goBack()" style="position: absolute;
+    top: 30px;
+    left: 5px;" small ion-button icon-only clear color="light" class="course-back">          
+        <img class="back-btn" style="height: 20px;padding-left: 10px;" src="assets/imgs/back2.png" /> 
+    </button>
+
+    <label>个人信息</label>
+    </div>
+</ion-header>
+<ion-content style="background:#f2f2f2;">
+<div style="height:100%;width:100%;margin-top: 10px">
+  <ion-list class="contactus-list" mode="ios" style="margin:0 0 10px;">
+    <ion-item mode="ios">
+      <ion-label mode="ios" style="font-size: 1.4rem;" col-3>用户名</ion-label>
+      <ion-label mode="ios" col-9 style="        position: absolute;
+      right: 0;
+      top: 0px;
+      text-align: right;font-size: 1.4rem;">{{name}}</ion-label>     
+    </ion-item>
+    <ion-item mode="ios">
+      <ion-label mode="ios" style="font-size: 1.4rem;" col-3>工号</ion-label>
+      <ion-label mode="ios" col-9 style="        position: absolute;
+      right: 0;
+      top: 0px;
+      text-align: right;font-size: 1.4rem;">{{memberid}}</ion-label>     
+    </ion-item>
+    <ion-item mode="ios">
+      <ion-label mode="ios" style="font-size: 1.4rem;" col-3>身份认证</ion-label>
+      <ion-label mode="ios" col-9 style="        position: absolute;
+      right: 0;
+      top: 0px;
+      text-align: right;font-size: 1.4rem;">已认证</ion-label>     
+    </ion-item>
+    <ion-item mode="ios">
+      <ion-label mode="ios" style="font-size: 1.4rem;" col-3>性别</ion-label>
+      <ion-label mode="ios" col-9 style="        position: absolute;
+      right: 0;
+      top: 0px;
+      text-align: right;font-size: 1.4rem;">男</ion-label>     
+    </ion-item>
+    <ion-item mode="ios">
+      <ion-label mode="ios" style="font-size: 1.4rem;" col-3>职位</ion-label>
+      <ion-label mode="ios" col-9 style="        position: absolute;
+      right: 0;
+      top: 0px;
+      text-align: right;font-size: 1.4rem;">外访专员</ion-label>     
+    </ion-item>
+  </ion-list>
+</div>
+</ion-content>

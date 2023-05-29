@@ -1,0 +1,46 @@
+<ion-header>
+
+  <div class="title">
+    <button (click)="goBack()" style="position: absolute;
+    top: 30px;
+    left: 5px;" small ion-button icon-only clear color="light" class="course-back">          
+        <img class="back-btn" style="height: 20px;padding-left: 10px;" src="assets/imgs/back2.png" /> 
+    </button>
+
+    <label>联系我们</label>
+</div>
+</ion-header>
+<ion-content style="background:#f2f2f2;">
+<div style="height:100%;width:100%;margin-top: 10px">
+  <ion-list class="contactus-list" mode="ios" style="margin:0 0 10px;">
+    <ion-item mode="ios"  (tap)="gotoOffcialwebsite()">
+      <ion-label mode="ios" style="font-size: 1.4rem;" col-3>电话客服</ion-label>
+      <ion-label mode="ios" col-9 style="padding-left: 14px;font-size: 1.4rem;">18126454590</ion-label>     
+    </ion-item>
+    <ion-item mode="ios"  (tap)="gotoOffcialwebsite()">
+      <ion-label mode="ios" style="font-size: 1.4rem;" col-3>联系邮箱</ion-label>
+      <ion-label mode="ios" col-9 style="padding-left: 14px;font-size: 1.4rem;">76472598@qq.com</ion-label>     
+    </ion-item>
+    <ion-item mode="ios">
+      <ion-label mode="ios" style="font-size: 1.4rem;" col-3>QQ客服</ion-label>
+      <ion-label mode="ios" col-9 style="padding-left: 14px;font-size: 1.4rem;">
+        <a style="color:#757575">76472598</a>
+      </ion-label>
+    </ion-item>
+    <!-- <ion-item mode="ios">
+      <ion-label mode="ios" style="font-size: 1.4rem;" col-3>{{Lang["contact_qq"]}}</ion-label>
+      <ion-label mode="ios" col-9 style="padding-left: 11px;font-size: 1.4rem;">{{contact_qq}}</ion-label>
+    </ion-item>
+    <ion-item mode="ios" (tap)="gotoOnlineService()">
+      <ion-label mode="ios" style="font-size: 1.4rem;" col-3>{{Lang["onlineservice"]}}</ion-label>
+      <ion-icon name="arrow-forward" class="contactus-darkgrey" item-right style="color:#d5d5d5"></ion-icon>
+  </ion-item> -->
+  </ion-list>
+ 
+  <ion-list class="contact-feed-back-list">
+    <ion-item style="font-size: 1.4rem;color:#383838" (tap)="gotoFeedback()">
+      意见反馈
+    </ion-item>
+  </ion-list>
+</div>
+</ion-content>

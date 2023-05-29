@@ -1,0 +1,385 @@
+ <!-- <ion-header>
+   
+
+    
+    
+
+    
+     
+    
+  </ion-header> -->
+  
+  <div class="sy">
+    <div style=" top: 25%;left: -30%;" class="syf">{{uname}}</div>
+    <div class="syf">{{uname}}</div>
+    <div style=" top: 75%;left:30%" class="syf">{{uname}}</div>
+  </div>
+
+  
+  
+  
+  
+  <ion-content (swipe)="swipeEvent($event)">
+      
+          <ion-refresher  (ionRefresh)="doRefresh($event)" (ionStart)="refreshStart($event)">
+              <ion-refresher-content pullingIcon="ios-arrow-round-down-outline"
+                                     pullingText="下拉刷新"                                 
+                                     refreshingSpinner="ios-small"
+                                     refreshingText="正在刷新..."></ion-refresher-content>
+        </ion-refresher>
+      
+    <div class="title" style="background-color: #1e1e1e">
+        <ion-searchbar (ionInput)="filterItems($event)" placeholder="请输入外访地区或姓名查询~"></ion-searchbar>       
+    </div>
+    <div>
+        <ion-slides #slides pager loop="true"  autoplay="4000" autoplayDisableOnInteraction="false" *ngIf='carouselImgList.length>0'
+            (swipe)="swipeEvents($event)">
+            <ion-slide *ngFor="let carouselImg of carouselImgList">
+              <img src="{{carouselImg.imgUrl}}" class="slide-image">
+            </ion-slide>
+        </ion-slides>
+    </div>
+    <div>
+        <ion-segment [(ngModel)]="segmentModel">
+            <!-- <ion-segment-button (click)="getAllData('')" value="segmentOne">
+              全部({{this.allDataCount}})
+            </ion-segment-button> -->
+            <ion-segment-button (click)="getIngData('B')" value="segmentTwo">
+              进行中({{this.ingDataCount}})
+            </ion-segment-button>
+            <ion-segment-button (click)="getNingData('A')" value="segmentThree">
+              未进行({{this.ningDataCount}})
+            </ion-segment-button>
+            <ion-segment-button (click)="getEndData('C')" value="segmentFour">
+              已完成({{this.endDataCount}})
+            </ion-segment-button>
+            <ion-segment-button (click)="getOutData('D')" value="segmentFive">
+              已逾期({{this.outDataCount}})
+            </ion-segment-button>
+        </ion-segment>
+    </div>
+    
+    
+    <!-- <div><h5 class="title">我的案件列表</h5></div> -->
+    <div [ngSwitch]="segmentModel">
+        <div *ngIf="datalist.length>0">
+            <div *ngFor="let li of datalist;">              
+                <div class="card" *ngSwitchCase="'segmentOne'">            
+                     <!-- <div id="{{li.case_id}}" style="width: 100%;height: 250px;"></div> -->
+                     <div class="card-body" (click)="goToDetails(li)">            
+                       <div class="card-exceprt" style="height:100%;margin-left: -15px;">                                      
+                             <ion-item class="left">                        
+                                 <ion-icon class="icon" name="document"></ion-icon>
+                                 <p>案件ID：{{li.case_id}}</p>                                                   
+                             </ion-item>  
+                             <ion-item class="right">                        
+                                 <ion-icon class="icon" name="person"></ion-icon>
+                                 <p>姓名：{{li.case_name}}</p>                                                  
+                             </ion-item>                         
+                             <ion-item class="left">                        
+                                 <ion-icon  class="icon" name="calendar"></ion-icon>
+                                 <p>委案日期：{{li.case_time}}</p>                                                      
+                             </ion-item>   
+                             <ion-item class="right">                        
+                                 <ion-icon class="icon" name="home"></ion-icon>
+                                 <p>银行：{{li.bank_name}}</p>                                                     
+                             </ion-item>  
+                             <ion-item class="left">                        
+                                 <ion-icon class="icon" name="time"></ion-icon>
+                                 <p>退案日期：{{li.case_backdate_p}}</p>                                                   
+                             </ion-item>   
+                             <ion-item class="right">                        
+                                 <ion-icon class="icon" name="logo-yen"></ion-icon>
+                                 <p>金额：{{li.case_money}}</p>                                                  
+                             </ion-item>   
+                             <ion-item class="left">                        
+                                 <ion-icon class="icon" name="stopwatch"></ion-icon>
+                                 <!-- <p>状态：未进行</p>-->
+                                 <button *ngIf="li.status == 'A'" style="height:20px;font-size: 12px;background-color: #666" ion-button danger>未进行</button>
+                                 <button *ngIf="li.status == 'B'" style="height:20px;font-size: 12px" ion-button primary>进行中</button>
+                                 <button *ngIf="li.status == 'C'" style="height:20px;font-size: 12px;background-color: #009a9a" ion-button primary>已完成</button>
+                             </ion-item><br>
+                             <ion-item class="right">                        
+                                                                            
+                              </ion-item> 
+                             <ion-item style="width:340px;" class="left">                        
+                              <ion-icon class="icon" name="pin"></ion-icon>
+                              <p>外访地址：{{li.adress}}...</p>                                                   
+                             </ion-item> 
+                             <ion-item style="width:340px;" class="left">                        
+                              <ion-icon class="icon" name="pin"></ion-icon>
+                              <p>信函投递进度：{{li.eis_process_des}}...</p>                                                   
+                             </ion-item>                        
+                       </div>  
+                                 
+                     </div>           
+                 </div>
+               </div>
+        </div>
+        <div *ngSwitchCase="'segmentOne'"  class="norecord"><span *ngIf="datalist.length<=0">还没有记录哦~~</span></div> 
+        <div *ngSwitchCase="'segmentOne'"  class="endrecord"><span *ngIf="datalist.length>0">已经到底啦~~</span></div> 
+              
+             
+        <div *ngIf="ingDataList.length>0">
+          <div *ngFor="let li of ingDataList;">              
+            <div class="card" *ngSwitchCase="'segmentTwo'">            
+                 <!-- <div id="{{li.case_id}}" style="width: 100%;height: 250px;"></div> -->
+                 <div class="card-body" (click)="goToDetails(li)">            
+                   <div class="card-exceprt" style="height:100%;margin-left: -15px;">                                      
+                    <ion-item class="left">                        
+                      <ion-icon class="icon" name="document"></ion-icon>
+                      <p>案件ID：{{li.case_id}}</p>                                                   
+                  </ion-item>  
+                  <ion-item class="right">                        
+                      <ion-icon class="icon" name="person"></ion-icon>
+                      <p>姓名：{{li.case_name}}</p>                                                  
+                  </ion-item>                         
+                  <ion-item class="left">                        
+                      <ion-icon  class="icon" name="calendar"></ion-icon>
+                      <p>委案日期：{{li.case_time}}</p>                                                      
+                  </ion-item>   
+                  <ion-item class="right">                        
+                      <ion-icon class="icon" name="home"></ion-icon>
+                      <p>银行：{{li.bank_name}}</p>                                                     
+                  </ion-item>  
+                  <ion-item class="left">                        
+                      <ion-icon class="icon" name="time"></ion-icon>
+                      <p>退案日期：{{li.case_backdate_p}}</p>                                                   
+                  </ion-item>   
+                  <ion-item class="right">                        
+                      <ion-icon class="icon" name="logo-yen"></ion-icon>
+                      <p>金额：{{li.case_money}}</p>                                                  
+                  </ion-item>   
+                         <ion-item class="right">                        
+                             <ion-icon class="icon" name="stopwatch"></ion-icon>
+                             <!-- <button style="height:20px;font-size: 12px;margin-right: 65px;" ion-button primary>进行中</button>                                                 -->
+                             <p>状态：<span style="color: #366bc7;
+                              font-weight: 600;">进行中</span></p>       
+                         </ion-item>   
+                         <ion-item class="left">                        
+                          <ion-icon class="icon" name="time"></ion-icon>
+                          <p>派单日期：{{li.created_time}}</p>                                       
+                          </ion-item> 
+                          <ion-item style="width:340px;" class="left">                        
+                            <ion-icon class="icon" name="pin"></ion-icon>
+                            <p>外访地址：{{li.adress}}...</p>                                                   
+                            </ion-item>
+                            <ion-item style="width:340px;" class="left">                        
+                              <ion-icon class="icon" name="pin"></ion-icon>
+                              <p>信函投递进度：{{li.eis_process_des}}...</p>                                                   
+                             </ion-item>                        
+                   </div>                 
+                 </div>
+                 <div style="height: 0px"><img *ngIf="li.time_code == 2" style="    width: 150px;
+                  position: relative;
+                  top: -85px;
+                  right: -62%;" src="assets/imgs/overtime.png"></div>
+                   <div style="height: 0px"><img *ngIf="li.time_code == 1" style="   width: 75px;
+                    position: relative;
+                    top: -77px;
+                    right: -71%;
+                 " src="assets/imgs/08075dfa2dd61241.png"></div>          
+                                
+             </div>
+           </div>                   
+        </div>
+        <div *ngSwitchCase="'segmentTwo'"  class="norecord"><span *ngIf="ingDataList.length<=0">还没有记录哦~~</span></div>
+        <div *ngSwitchCase="'segmentTwo'"  class="endrecord"><span *ngIf="ingDataList.length>0">已经到底啦~~</span></div> 
+        
+        <div *ngIf="ningDataList.length>0">
+            <div *ngFor="let li of ningDataList;">              
+             <div class="card" *ngSwitchCase="'segmentThree'">            
+                  <!-- <div id="{{li.case_id}}" style="width: 100%;height: 250px;"></div> -->
+                  <div class="card-body" (click)="goToDetails(li)">            
+                    <div class="card-exceprt" style="height:100%;margin-left: -15px;">                                      
+                     <ion-item class="left">                        
+                       <ion-icon class="icon" name="document"></ion-icon>
+                       <p>案件ID：{{li.case_id}}</p>                                                   
+                   </ion-item>  
+                   <ion-item class="right">                        
+                       <ion-icon class="icon" name="person"></ion-icon>
+                       <p>姓名：{{li.case_name}}</p>                                                  
+                   </ion-item>                         
+                   <ion-item class="left">                        
+                       <ion-icon  class="icon" name="calendar"></ion-icon>
+                       <p>委案日期：{{li.case_time}}</p>                                                      
+                   </ion-item>   
+                   <ion-item class="right">                        
+                       <ion-icon class="icon" name="home"></ion-icon>
+                       <p>银行：{{li.bank_name}}</p>                                                     
+                   </ion-item>  
+                   <ion-item class="left">                        
+                       <ion-icon class="icon" name="time"></ion-icon>
+                       <p>退案日期：{{li.case_backdate_p}}</p>                                                   
+                   </ion-item>   
+                   <ion-item class="right">                        
+                       <ion-icon class="icon" name="logo-yen"></ion-icon>
+                       <p>金额：{{li.case_money}}</p>                                                  
+                   </ion-item>
+  
+                  <ion-item class="right">                        
+                      <ion-icon class="icon" name="stopwatch"></ion-icon>
+                      <!-- <button style="height:20px;font-size: 12px;background-color: #666;margin-right: 65px;" ion-button danger>未进行</button>                                                 -->
+                      <p>状态：<span style="color: #666;
+                        font-weight: 600;">未进行</span></p>       
+                  </ion-item> 
+                  <ion-item class="left">                        
+                    <ion-icon class="icon" name="time"></ion-icon>
+                    <p>派单日期：{{li.created_time}}</p>                                       
+                    </ion-item> 
+                  
+                             
+                    <ion-item style="width:340px;" class="left">                        
+                      <ion-icon class="icon" name="pin"></ion-icon>
+                      <p>外访地址：{{li.adress}}...</p>                                                   
+                      </ion-item>    
+                      <ion-item style="width:340px;" class="left">                        
+                        <ion-icon class="icon" name="pin"></ion-icon>
+                        <p>信函投递进度：{{li.eis_process_des}}...</p>                                                   
+                       </ion-item>                  
+                    </div>                 
+                  </div>   
+                  <div style="height: 0px"><img *ngIf="li.is_urgent == 1" style="    width: 150px;
+                    position: relative;
+                    top: -85px;
+                    right: -62%;" src="assets/imgs/c0d65c43413e0973.png"></div>      
+              </div>
+            </div>
+           </div>
+          
+           <div *ngSwitchCase="'segmentThree'"  class="norecord"><span *ngIf="ningDataList.length<=0">还没有记录哦~~</span></div> 
+           <!-- <div *ngSwitchCase="'segmentThree'"  class="endrecord"><span *ngIf="ningDataList.length>0">已经到底啦~~</span></div>  -->
+           
+           <div *ngIf="endDataList.length>0">
+              <div style="padding:12px">
+                  <ion-item style="border: 1px solid #ddd;">
+                    <ion-label style="    font-size: 14px;
+                    margin: 12px;
+                    color: #6e6e6e;">催收结果</ion-label>
+                    <ion-select style="background-color: #ffffff;max-width:100%" okText="确定" cancelText="取消" selectedText="{{seclectedCountry}}" >             
+                        <ion-option *ngFor="let num of country" (ionSelect)="selectNumber(num)" value={{num.value}}>{{num.title}}</ion-option>
+                    </ion-select>
+                  </ion-item>
+                    
+                </div>
+              <div  *ngFor="let li of endDataList;">              
+                <div class="card" *ngSwitchCase="'segmentFour'">            
+                     <!-- <div id="{{li.case_id}}" style="width: 100%;height: 250px;"></div> -->
+                     <div class="card-body" style="height: 18rem" (click)="goToDetails(li)">            
+                       <div class="card-exceprt" style="height:100%;margin-left: -15px;">                                      
+                        <ion-item class="left">                        
+                          <ion-icon class="icon" name="document"></ion-icon>
+                          <p>案件ID：{{li.case_id}}</p>                                                   
+                      </ion-item>  
+                      <ion-item class="right">                        
+                          <ion-icon class="icon" name="person"></ion-icon>
+                          <p>姓名：{{li.case_name}}</p>                                                  
+                      </ion-item>                         
+                      <ion-item class="left">                        
+                          <ion-icon  class="icon" name="calendar"></ion-icon>
+                          <p>委案日期：{{li.case_time}}</p>                                                      
+                      </ion-item>   
+                      <ion-item class="right">                        
+                          <ion-icon class="icon" name="home"></ion-icon>
+                          <p>银行：{{li.bank_name}}</p>                                                     
+                      </ion-item>  
+                      <ion-item class="left">                        
+                          <ion-icon class="icon" name="time"></ion-icon>
+                          <p>退案日期：{{li.case_backdate_p}}</p>                                                   
+                      </ion-item>   
+                      <ion-item class="right">                        
+                          <ion-icon class="icon" name="bookmark"></ion-icon>
+                          <!-- <button style="height:20px;font-size: 12px;margin-right: 65px" ion-button primary>{{li.result}}</button> -->
+                          <p>结果：<span style="color: #366bc7;
+                            font-weight: 600;">{{li.result}}</span></p>                                                 
+                      </ion-item>   
+                      <ion-item class="left">                        
+                        <ion-icon class="icon" name="time"></ion-icon>
+                        <p>派单日期：{{li.created_time}}</p>                                       
+                        </ion-item>
+                              
+                             <ion-item class="right">                        
+                                 <ion-icon class="icon" name="stopwatch"></ion-icon>
+                                 <!-- <button style="height:20px;font-size: 12px;background-color: #009a9a;margin-right: 65px" ion-button primary>已完成</button>                                                       -->
+                                 <p>状态：<span style="color: #458056;
+                                  font-weight: 600;">已完成</span></p>   
+                             </ion-item> 
+                             <ion-item class="left">                        
+                              <ion-icon class="icon" name="time"></ion-icon>
+                              <p>完成日期：{{li.updated_time}}</p>                                       
+                              </ion-item>  
+                             <ion-item style="width:340px;" class="left">                        
+                              <ion-icon class="icon" name="pin"></ion-icon>
+                              <p>外访地址：{{li.adress}}...</p>                                                   
+                              </ion-item> 
+                              <ion-item style="width:340px;" class="left">                        
+                                <ion-icon class="icon" name="pin"></ion-icon>
+                                <p>信函投递进度：{{li.eis_process_des}}...</p>                                                   
+                               </ion-item> 
+                                                       
+                       </div>                 
+                     </div>           
+                 </div>
+               </div>              
+             </div>     
+             <div *ngSwitchCase="'segmentFour'"  class="norecord"><span *ngIf="endDataList.length<=0">还没有记录哦~~</span></div>  
+             <div *ngSwitchCase="'segmentFour'"  class="endrecord"><span *ngIf="endDataList.length>0">已经到底啦~~</span></div> 
+
+             <div *ngIf="outDataList.length>0">
+              <div  *ngFor="let li of outDataList;">              
+                <div class="card" *ngSwitchCase="'segmentFive'">            
+                     <div class="card-body" style="height: 12rem">            
+                       <div class="card-exceprt" style="height:100%">                                      
+                        <ion-item class="left">                        
+                          <ion-icon class="icon" name="document"></ion-icon>
+                          <p>案件ID：{{li.case_id}}</p>                                                   
+                      </ion-item>  
+                      <ion-item class="right">                        
+                          <ion-icon class="icon" name="person"></ion-icon>
+                          <p>姓名：{{li.case_name}}</p>                                                  
+                      </ion-item>                         
+                      <ion-item class="left">                        
+                          <ion-icon  class="icon" name="calendar"></ion-icon>
+                          <p>委案日期：{{li.case_time}}</p>                                                      
+                      </ion-item>   
+                      <ion-item class="right">                        
+                          <ion-icon class="icon" name="home"></ion-icon>
+                          <p>银行：{{li.bank_name}}</p>                                                     
+                      </ion-item>  
+                      <ion-item class="left">                        
+                          <ion-icon class="icon" name="time"></ion-icon>
+                          <p>退案日期：{{li.case_backdate_p}}</p>                                                   
+                      </ion-item>   
+                      <ion-item class="right">                        
+                          <ion-icon class="icon" name="logo-yen"></ion-icon>
+                          <p>金额：{{li.case_money}}</p>                                                  
+                      </ion-item>  
+                      <ion-item class="left">                        
+                        <ion-icon class="icon" name="time"></ion-icon>
+                        <p>派单日期：{{li.created_time}}</p>   
+                      </ion-item>              
+                             <ion-item class="right">                        
+                                 <ion-icon class="icon" name="stopwatch"></ion-icon>                                                       
+                                 <p>状态：<span style="color: #ce6058;
+                                  font-weight: 600;">已逾期</span></p>  
+                             </ion-item>   
+                             <ion-item style="width:340px;" class="left">                        
+                              <ion-icon class="icon" name="pin"></ion-icon>
+                              <p>信函投递进度：{{li.eis_process_des}}...</p>                                                   
+                             </ion-item>                      
+                       </div>                 
+                     </div>           
+                 </div>
+               </div>
+             </div>     
+             <div *ngSwitchCase="'segmentFive'"  class="norecord"><span *ngIf="endDataList.length<=0">还没有记录哦~~</span></div>  
+             <div *ngSwitchCase="'segmentFive'"  class="endrecord"><span *ngIf="endDataList.length>0">已经到底啦~~</span></div> 
+    </div>
+    <!-- <ion-infinite-scroll (ionInfinite)="doInfinites($event)" threshold="100px">
+      <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="加载更多..">
+      </ion-infinite-scroll-content>
+      </ion-infinite-scroll> -->
+  </ion-content>
+  

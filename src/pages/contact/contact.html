@@ -1,0 +1,125 @@
+<!-- <ion-header>
+  <ion-navbar>
+    <ion-title>
+      我的
+    </ion-title>
+  </ion-navbar>
+</ion-header> -->
+
+<ion-content>
+  <!-- <button class="button" (click)="getarea()">点击我获取地址百度</button>
+  <div id="allmap" style="width: 100%;height: 300px;"></div> -->
+  <!-- <div class="bar bar-header">
+      
+    </div> -->
+    <div>
+        <i style="position: absolute;
+        left: 90%;
+        top: 18px;" class="sjy-icons iconshezhi" (click)="gotoSetting()"></i>
+        <div class="head-box" style="margin-top:40px; margin-left: 60px;"></div>
+        <span style="position: absolute;
+        top: 50px;font-size: 20px;font-weight: 600;
+        left: 170px;">{{this.name}}</span>
+        <span style="position: absolute;
+        top: 100px;color: #444;
+        left: 170px;">工号: {{this.memberid}}</span>
+    </div>
+    
+    
+    <div class="content has-header ionic-pseudo" style="top:40px">
+
+      <div class="list">
+
+          <div class="item item-divider">
+              <!-- Activities -->
+          </div>
+
+        <a class="item item-icon-left" href="#" (click)="gotoUserInfo()">
+          <i  class="sjy-icons  icongerenxinxi"></i>
+          <!-- <ion-icon class="icongerenxinxi"></ion-icon> -->
+          个人信息
+          <span class="sp">
+              <i style="font-size:23px" class="icon ion-ios-arrow-forward"></i>
+          </span>
+        </a>
+
+        <!-- <a class="item item-icon-left item-icon-right" href="#">
+          <i class="icon ion-chatbubble-working"></i>
+          我的案件
+          <i class="icon ion-ios-telephone-outline"></i>
+        </a> -->
+
+        <a class="item item-icon-left" href="#"   (click)="gotoUserCase()">
+          <i class="sjy-icons  iconxingcheng"></i>
+          <!-- 我的案件 -->每日返程
+          <span class="sp">
+              <i style="font-size:23px" class="icon ion-ios-arrow-forward"></i>
+          </span>
+          
+        </a>
+
+        <a class="item item-icon-left" href="#" (click)="gotoUserMessage()">
+          <i class="sjy-icons iconxiaoxi"></i>
+          我的消息
+          <span class="badge badge-assertive">0</span>
+        </a>
+
+        <div class="item item-divider">
+          <!-- Activities -->
+        </div>
+
+        <!-- <a class="item item-icon-left" href="#">
+          <i class="icon ion-beaker"></i>
+          我的消息
+          <span class="item-note">
+            Blue, yellow, pink
+          </span>
+        </a> -->
+
+        <!-- <a class="item item-icon-left" href="#" (click)="gotoUserTrip()">
+          <i class="sjy-icons iconxingcheng"></i>
+          我的行程
+          <span class="sp">
+              <i style="font-size:23px" class="icon ion-ios-arrow-forward"></i>
+          </span>
+        </a> -->
+
+        <a class="item item-icon-left" href="#" (click)="gotoContanctUS()">
+          <i class="sjy-icons iconlianxiwomen-copy"></i>
+          联系我们
+          <span class="sp">
+              <i style="font-size:23px" class="icon ion-ios-arrow-forward"></i>
+          </span>
+        </a>
+        <!-- <a class="item item-icon-left" href="#" (click)="gotoUserSystem()">
+          <i class="icon ion-flash"></i>
+          外访注意事项
+          <span class="sp">
+              <i style="font-size:23px" class="icon ion-ios-arrow-forward"></i>
+          </span>
+        </a>
+        <a class="item item-icon-left" href="#" (click)="gotoOperationExplain()">
+          <i class="sjy-icons iconxiaoxi"></i>
+          操作说明
+          <span class="sp">
+              <i style="font-size:23px" class="icon ion-ios-arrow-forward"></i>
+          </span>
+        </a> -->
+        <div class="item item-divider">
+            <!-- Activities -->
+          </div>
+        <a class="item item-icon-left item-icon-right" (click)="gotoSetting()" href="#">
+          <i class="sjy-icons iconshezhi"></i>
+          设置
+          <span class="sp" style="right:46px">
+              <i style="font-size:23px" class="icon ion-ios-arrow-forward"></i>
+          </span>
+        </a>
+
+        
+
+      </div>
+
+    </div>
+
+</ion-content>

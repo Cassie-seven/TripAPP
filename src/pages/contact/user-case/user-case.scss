@@ -1,0 +1,53 @@
+page-user-case {
+    .xc-box{
+        background-image: url('../assets/imgs/noData.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+        margin: 0 auto;
+        width: 46%;
+        height: 35%;
+        display: flex;
+        justify-content:center;
+        align-items:Center;
+        margin-top: 50%
+    }
+    .title {
+        text-align: center;      
+        font-size: 14px;
+        height: 70px;
+        // background-color: #4b6286;
+        background-color: #2d3d54;
+        width: 100%;
+        color: #FFFFFF;
+        padding-top: 40px;
+    }
+    .top {
+        width: 46%;
+        height: 30%;
+        background-color: #2d3d54;
+        margin: 60px auto;
+        border-radius: 20%;
+    }
+    .bottom {
+        width: 46%;
+        height: 30%;
+        background-color: #2d3d54;
+        margin: 100px auto;
+        border-radius: 20%;
+    }
+    .p-s {
+        color:#fff;
+        text-align: center;
+        font-weight: 600;
+        display: flex;
+        justify-content:center;
+        align-items:center;
+        padding-top: 45%
+    }
+    .tit {
+        position: absolute;
+        left: 20%;
+        font-size: 12px;
+        top: 45%;
+    }
+}
